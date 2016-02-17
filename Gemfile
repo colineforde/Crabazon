@@ -16,5 +16,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'faker'
 end
 
