@@ -170,9 +170,24 @@ RSpec.describe ProductsController, type: :controller do
         it "returns a 401 status" do
           product = Product.create!(valid_attributes)
           put :update, {:id => product.to_param, :product => valid_attributes}
-          expect(assigns(:product)).to eq(product)
+          expect(response.status).to eq(401)
         end
       end
+    end
+    describe "POST #create" do
+      context "with valid params" do
+        it "does not create a new Product" do
+          expect {
+            post :create, {:product => valid_attributes}
+          }.to change(Product, :count).by(0)
+        end
+
+        it "returns a 401 status" do
+          post :create, {:product => valid_attributes}
+          expect(response.status).to eq(401)
+        end
+      end
+
     end
   end
 
