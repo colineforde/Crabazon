@@ -3,13 +3,17 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-
 require 'capybara/poltergeist'
-Cabybara.javascript_driver = :poltergeist
+require 'capybara/rails'
+require 'capybara/rspec'
+
+Capybara.javascript_driver = :poltergeist
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  config.include(Capybara::DSL)
 
   config.use_transactional_fixtures = false
 
