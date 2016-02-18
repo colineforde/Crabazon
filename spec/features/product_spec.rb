@@ -16,6 +16,7 @@ describe "Product", js: true do
       let(:image_url) { 'bogus' }
 
       it 'can create a new product' do
+        page.driver.basic_authorize('admin', 'secret')
         visit new_product_path
         fill_in 'Name', with: name
         fill_in 'Description', with: description
