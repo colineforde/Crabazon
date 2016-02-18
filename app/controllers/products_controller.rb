@@ -19,8 +19,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:success] = "Product successfully created!"
       redirect_to @product
     else
+      flash.now[:danger] = @product.errors.full_messages
       render :new
     end
   end
@@ -29,6 +31,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product
     else
+      flash.now[:danger] = @product.errors.full_messages
       render :edit
     end
   end
