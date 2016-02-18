@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
   let(:valid_attributes) {
-    {name: 'iPhone 3G', price: 399, description: 'Sturdy'}
+    {name: 'Goulash', price: 4.50, description: 'Tasty', image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Goulash_from_usa.jpg'}
   }
 
   let(:invalid_attributes) {
@@ -76,14 +76,14 @@ RSpec.describe ProductsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {name: 'iPhone 4S', price: 499, description: 'New and improved'}
+        {name: 'iPhone 4S', price: 499.0, description: 'New and improved', image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png'}
       }
 
       it "updates the requested product" do
         product = Product.create!(valid_attributes)
         put :update, {:id => product.to_param, :product => new_attributes}
         product.reload
-        expect({name: product.name, price: product.price, description: product.description}).to eq(new_attributes)
+        expect({name: product.name, price: product.price, description: product.description, image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png'}).to eq(new_attributes)
       end
 
       it "assigns the requested product as @product" do
@@ -130,32 +130,8 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "Routing" do
-    it "routes to #index" do
-      expect(:get => "/products").to route_to("products#index")
-    end
-
-    it "routes to #new" do
-      expect(:get => "/products/new").to route_to("products#new")
-    end
-
-    it "routes to #show" do
-      expect(:get => "/products/1").to route_to("products#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/products/1/edit").to route_to("products#edit", :id => "1")
-    end
-
-    it "routes to #create" do
-      expect(:post => "/products").to route_to("products#create")
-    end
-
-    it "routes to #update" do
-      expect(:put => "/products/1").to route_to("products#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      expect(:delete => "/products/1").to route_to("products#destroy", :id => "1")
+    it "/ routes to to products#index" do
+      expect(:get => "/").to route_to("products#index")
     end
   end
 end

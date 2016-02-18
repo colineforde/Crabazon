@@ -2,15 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   let(:valid) {
-    Product.new({name: 'iPhone 3G', price: 399, description: 'Sturdy'})
+    Product.new({name: 'iPhone 3G', price: 399, description: 'Sturdy', image_url: Faker::Avatar.image})
   }
 
   let(:blank) {
-    Product.new({name: '', price: nil, description: ''})
+    Product.new({name: '', price: nil, description: '', image_url: ''})
   }
 
   let(:negative_price) {
-    Product.new({name: 'iPhone 3G', price: -100, description: 'Sturdy'})
+    Product.new({name: 'iPhone 3G', price: -100, description: 'Sturdy', image_url: Faker::Avatar.image})
   }
 
   describe "product validations" do
@@ -20,6 +20,7 @@ RSpec.describe Product, type: :model do
         expect(blank.errors[:name]).to include("can't be blank")
         expect(blank.errors[:description]).to include("can't be blank")
         expect(blank.errors[:price]).to include("can't be blank")
+        expect(blank.errors[:image_url]).to include("can't be blank")
       end
       it "the price is negative" do
         negative_price.save
