@@ -13,9 +13,9 @@ describe "Product", js: true do
       let(:name) { "Nexus 5" }
       let(:description) { "Just OK"}
       let(:price) { 349.99 }
-      let(:image_url) { 'bogus' }
+      let(:image_url) { 'sample' }
 
-      it 'can create a new product' do
+      it 'can create a new product when authorized' do
         page.driver.basic_authorize('admin', 'secret')
         visit new_product_path
         fill_in 'Name', with: name
