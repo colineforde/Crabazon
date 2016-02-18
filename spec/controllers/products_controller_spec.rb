@@ -130,7 +130,7 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "Routing" do
-    it "/ routes to to products#index" do
+    it "/ routes to products#index" do
       expect(:get => "/").to route_to("products#index")
     end
   end
