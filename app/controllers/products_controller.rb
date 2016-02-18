@@ -37,6 +37,10 @@ class ProductsController < ApplicationController
     redirect_to products_url
   end
 
+  def admin
+    @products = Product.all
+  end
+
   private
 
   def set_product
