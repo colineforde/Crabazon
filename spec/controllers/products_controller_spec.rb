@@ -2,13 +2,13 @@ require 'rails_helper'
 require 'auth_helper'
 
 RSpec.describe ProductsController, type: :controller do
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {name: 'Goulash', price: 4.50, description: 'Tasty', image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Goulash_from_usa.jpg'}
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     {name: '', price: -10, description: ''}
-  }
+  end
 
   include AuthHelper
 
