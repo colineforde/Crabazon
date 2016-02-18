@@ -17,5 +17,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
