@@ -91,7 +91,7 @@ RSpec.describe ProductsController, type: :controller do
           product = Product.create!(valid_attributes)
           put :update, {:id => product.to_param, :product => new_attributes}
           product.reload
-          expect({name: product.name, price: product.price, description: product.description, image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png'}).to eq(new_attributes)
+          expect({name: product.name, price: product.price, description: product.description, image_url: product.image_url}).to eq(new_attributes)
         end
 
         it "assigns the requested product as @product" do
