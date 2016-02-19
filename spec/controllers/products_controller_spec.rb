@@ -25,6 +25,14 @@ RSpec.describe ProductsController, type: :controller do
       end
     end
 
+    describe "GET #admin" do
+      it "assigns all products as @products" do
+        product = Product.create!(valid_attributes)
+        get :admin, {}
+        expect(assigns(:products)).to eq([product])
+      end
+    end
+
     describe "GET #show" do
       it "assigns the requested product as @product" do
         product = Product.create!(valid_attributes)
@@ -139,6 +147,15 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   context "for a normal user" do
+
+    describe "GET #admin" do
+      it "returns a 401 status" do
+        product = Product.create!(valid_attributes)
+        get :admin, {}
+        expect(response.status).to be(401)
+      end
+    end
+
     describe "DELETE #destroy" do
       it "does not destroy the requested product" do
         product = Product.create!(valid_attributes)
@@ -194,6 +211,10 @@ RSpec.describe ProductsController, type: :controller do
   describe "Routing" do
     it "/ routes to products#index" do
       expect(:get => "/").to route_to("products#index")
+    end
+
+    it '/admin routes to products#admin' do
+      expect(:get => "/admin").to route_to("products#admin")
     end
   end
 end
