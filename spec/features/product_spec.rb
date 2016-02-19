@@ -14,6 +14,7 @@ describe "Product", js: true do
       let(:description) { "Just OK"}
       let(:price) { 349.99 }
       let(:image_url) { 'sample' }
+      let(:quantity) { 2 }
 
       it 'can create a new product when authorized' do
         page.driver.basic_authorize('admin', 'secret')
@@ -22,6 +23,7 @@ describe "Product", js: true do
         fill_in 'Description', with: description
         fill_in 'Price', with: price
         fill_in 'Image url', with: image_url
+        fill_in 'Quantity', with: quantity
         click_button 'Save'
         expect(page).to have_content description
       end

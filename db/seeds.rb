@@ -11,5 +11,6 @@ Product.destroy_all
   Product.create(name: Faker::Commerce.product_name,
                  description: Faker::Lorem.sentence(10),
                  price: Faker::Number.decimal(2),
-                 image_url: Faker::Avatar.image)
+                 image_url: Faker::Avatar.image
+                 quantity: rand(1..5)
 end

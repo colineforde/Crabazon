@@ -1,17 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  let(:valid) {
-    Product.new({name: 'iPhone 3G', price: 399, description: 'Sturdy', image_url: Faker::Avatar.image})
-  }
+  let(:valid) do
+    Product.new({name: 'iPhone 3G', price: 399, description: 'Sturdy', image_url: Faker::Avatar.image, quantity: 1})
+  end
 
-  let(:blank) {
-    Product.new({name: '', price: nil, description: '', image_url: ''})
-  }
+  let(:blank) do
+    Product.new({name: '', price: nil, description: '', image_url: '', quantity: nil})
+  end
 
-  let(:negative_price) {
-    Product.new({name: 'iPhone 3G', price: -100, description: 'Sturdy', image_url: Faker::Avatar.image})
-  }
+  let(:negative_price) do
+    Product.new({name: 'iPhone 3G', price: -100, description: 'Sturdy', image_url: Faker::Avatar.image, quantity: 1})
+  end
+
+  let(:negative_quantity) do
+    Product.new({name: 'iPhone 3G', price: -100, description: 'Sturdy', image_url: Faker::Avatar.image, quantity: -1})
+  end
 
   describe "product validations" do
     context "will create an error" do
@@ -25,6 +29,10 @@ RSpec.describe Product, type: :model do
       it "the price is negative" do
         negative_price.save
         expect(negative_price.errors[:price]).to include("must be greater than 0")
+      end
+      it "the quantity is negative" do
+        negative_quantity.save
+        expect(negative_quantity.errors[:quantity]).to include("must be greater than 0")
       end
     end
     it 'saves with valid data' do

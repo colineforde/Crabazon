@@ -3,11 +3,11 @@ require 'auth_helper'
 
 RSpec.describe ProductsController, type: :controller do
   let(:valid_attributes) do
-    {name: 'Goulash', price: 4.50, description: 'Tasty', image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Goulash_from_usa.jpg'}
+    {name: 'Goulash', price: 4.50, description: 'Tasty', image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Goulash_from_usa.jpg', quantity: 2}
   end
 
   let(:invalid_attributes) do
-    {name: '', price: -10, description: ''}
+    {name: '', price: -10, description: '', quantity: nil}
   end
 
   include AuthHelper
@@ -84,14 +84,14 @@ RSpec.describe ProductsController, type: :controller do
     describe "PUT #update" do
       context "with valid params" do
         let(:new_attributes) {
-          {name: 'iPhone 4S', price: 499.0, description: 'New and improved', image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png'}
+          {name: 'iPhone 4S', price: 499.0, description: 'New and improved', image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png', quantity: 1}
         }
 
         it "updates the requested product" do
           product = Product.create!(valid_attributes)
           put :update, {:id => product.to_param, :product => new_attributes}
           product.reload
-          expect({name: product.name, price: product.price, description: product.description, image_url: product.image_url}).to eq(new_attributes)
+          expect({name: product.name, price: product.price, description: product.description, image_url: product.image_url, quantity: product.quantity}).to eq(new_attributes)
         end
 
         it "assigns the requested product as @product" do
@@ -157,14 +157,14 @@ RSpec.describe ProductsController, type: :controller do
     describe "PUT #update" do
       context "with valid params" do
         let(:new_attributes) do
-          {name: 'iPhone 4S', price: 499.0, description: 'New and improved', image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png'}
+          {name: 'iPhone 4S', price: 499.0, description: 'New and improved', image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/20/WatchOS_2_Logo.png', quantity: 1}
         end
 
         it "does not update the requested product" do
           product = Product.create!(valid_attributes)
           put :update, {:id => product.to_param, :product => new_attributes}
           product.reload
-          expect({name: product.name, price: product.price, description: product.description, image_url: product.image_url}).to eq(valid_attributes)
+          expect({name: product.name, price: product.price, description: product.description, image_url: product.image_url, quantity: product.quantity}).to eq(valid_attributes)
         end
 
         it "returns a 401 status" do
