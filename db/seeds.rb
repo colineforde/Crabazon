@@ -13,16 +13,33 @@ User.create!(username: 'tom', email: 'tom@tom.com', password: 'tomtom')
 cat1 = Category.create!(name: "apple")
 cat2 = Category.create!(name: "orange")
 cat3 = Category.create!(name: "banana")
+cat4 = Category.create!(name: "pear")
+cat5 = Category.create!(name: "pineapple")
 
-arr = [cat1.id, cat2.id, cat3.id]
 
-test1 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
-Categorization.create!(product_id: test1.id, category_id: cat1.id )
+# arr = [cat1.id, cat2.id, cat3.id]
 
-test2 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
-Categorization.create!(product_id: test2.id, category_id: cat1.id )
+# test1 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
+# Categorization.create!(product_id: test1.id, category_id: cat1.id )
 
-test3 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
-Categorization.create!(product_id: test3.id, category_id: cat2.id )
+# test2 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
+# Categorization.create!(product_id: test2.id, category_id: cat1.id )
+
+# test3 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
+# Categorization.create!(product_id: test3.id, category_id: cat2.id )
+
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1) }
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1) }
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1) }
+
+x = 1
+while x < 5
+	ProductCategory.create!(product_id: 1, category_id: x)
+	ProductCategory.create!(product_id: 2, category_id: x)
+	ProductCategory.create!(product_id: 3, category_id: x)
+	ProductCategory.create!(product_id: 4, category_id: x)
+	ProductCategory.create!(product_id: 5, category_id: x)
+	x += 1
+end
 
 

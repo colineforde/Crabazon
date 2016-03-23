@@ -2,7 +2,7 @@
   .container-fluid
     .nav.navbar-nav.navbar-right
       = link_to 'Product View', index_path, class: 'btn btn-default navbar-btn add-product'
-      = link_to new_product_path, class: 'btn btn-success navbar-btn add-product' do
+      = link_to new_category_product_path, class: 'btn btn-success navbar-btn add-product' do
         %i.glyphicon.glyphicon-plus
         %span New
 .container
@@ -19,7 +19,7 @@
             %th.text-center Price
             %th.text-center Quantity
         %tbody
-          - @products.each do |product|
+          - Category.first.products.each do |product|
             %tr
               %td= product.name
               %td.text-center= product.price
