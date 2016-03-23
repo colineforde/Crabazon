@@ -3,5 +3,6 @@ class Product < ActiveRecord::Base
   	belongs_to :user
   	scope :sort_by_price, -> { order(:price) }
     
-    has_and_belongs_to_many :categories
+    has_and_belongs_to_many :categories, join_table: 'categorizations'
+    
 end

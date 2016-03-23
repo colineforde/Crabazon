@@ -185,6 +185,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    table_print (1.5.4)
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -220,6 +221,7 @@ DEPENDENCIES
   rails
   rspec-rails
   sass-rails (>= 3.2)
+  table_print
   thin
   uglifier
 
