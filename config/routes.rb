@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admins
   devise_for :users
   resources :users
   resources :products
@@ -12,5 +11,4 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get 'index' => 'index#index', as: :index
-
 end

@@ -5,8 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(name: Faker::Hipster.name)
+# User.create(name: Faker::Hipster.name)
 
+User.create!(username: 'tim', email: 'tim@tim.com', password: 'timtim', admin: true)
+User.create!(username: 'tom', email: 'tom@tom.com', password: 'tomtom')
 
 cat1 = Category.create!(name: "apple")
 cat2 = Category.create!(name: "orange")
@@ -22,3 +24,5 @@ Categorization.create!(product_id: test2.id, category_id: cat1.id )
 
 test3 = Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image, reseller_id: 1 )
 Categorization.create!(product_id: test3.id, category_id: cat2.id )
+
+
