@@ -1,17 +1,29 @@
 class ProductsController < ApplicationController
   def index
+    @category = Category.find(params[:category_id])
     @products = Product.sort_by_price
   end
 
   def new
-    @product = Product.new
+    if current_user.admin?
+      @category = Category.find(params[:category_id])
+      @product = Product.new
+    else
+      redirect_to '/'
+    end 
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def edit
+    @category = Category.find(params[:category_id])
     @product = Product.find(params[:id])
   end
 
   def create
+    @category = Category.find(params[:category_id])
     @product = Product.new(product_params)
     if @product.save
       flash[:success] = "Product successfully created!"
@@ -23,6 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @category = Category.find(params[:category_id])
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:success] = "Product successfully updated!"
