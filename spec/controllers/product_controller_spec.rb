@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
+
+  admin = User.create(username: "tim",email: "tim@tim.com",password: "timtim" ,admin: true )
+
+
+  before :each do
+    sign_in admin
+  end
+
   describe 'GET #new' do 
     it 'assigns a new product to @product' do 
       get :new
