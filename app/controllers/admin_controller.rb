@@ -5,6 +5,7 @@ class AdminController < ApplicationController
 			flash[:error] = "You must be an admin to view the requested page"
 			redirect_to '/'
 		else
+			@categories = Category.all
 			@products = Product.sort_by_price
 		end
 	end
