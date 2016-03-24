@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(params[:id])
+    @category = Category.new(category_params)
     if @category.save
       flash[:success] = "New category successfully created"
       redirect_to "/admin"
