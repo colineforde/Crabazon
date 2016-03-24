@@ -1,5 +1,4 @@
 class VisitorMailer < ApplicationMailer
-
   default from: "from@example.com"
   
   def contact_email(name, email, message)
@@ -19,5 +18,4 @@ class VisitorMailer < ApplicationMailer
          to: @user.email,
          subject: 'Welcome to store!'
   end
-
 end

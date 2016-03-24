@@ -11,6 +11,7 @@
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
+      = link_to 'Contact Us', visitors_contact_path, class: 'btn btn-success navbar-btn add-product'
 .container
   .row
     - if flash[:success]

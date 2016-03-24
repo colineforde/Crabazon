@@ -25,5 +25,4 @@ class VisitorsController < ApplicationController
     flash[:success] = "Thanks for register! Please check your email"
     redirect_to '/'
   end
-  
 end
