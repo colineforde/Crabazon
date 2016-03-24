@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  # resources :users
-  # resources :products
   resources :admin
-  # get '/admin'
+  post 'visitors', to: 'visitors#contact'
+  get 'visitors/contact', to: 'visitors#contact' 
+  # resources :visitors
 
   resources :categories do
     resources :products
