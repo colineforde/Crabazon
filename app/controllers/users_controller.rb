@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	# after_create :welcome_email
 	def index				 
 	end
 
@@ -13,4 +14,8 @@ class UsersController < ApplicationController
 			end
 		end	
 	end
+
+	# def welcome_email
+	# 	mail(to: self.email, subject: "Welcome to the Shoppe! Thanks for signing up.")
+	# end
 end

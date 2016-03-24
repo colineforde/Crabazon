@@ -1,5 +1,4 @@
 class VisitorMailer < ApplicationMailer
-  default from: "from@example.com"
   
   def contact_email(name, email, message)
     @name = name
@@ -11,11 +10,9 @@ class VisitorMailer < ApplicationMailer
          subject: 'New Visitor\'s email'
   end
 
-  def welcome_new_user(user)
+  def welcome_email(user)
     @user = user
-
-    mail from: 'baronk0401@gmail.com',
-         to: @user.email,
-         subject: 'Welcome to store!'
+    @url  = 'http://sleepy-garden-69649.herokuapp.com/users/sign_in'
+    mail(to: @user.email, subject: 'Welcome to the Shoppe!')
   end
 end
