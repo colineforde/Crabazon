@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @category = Category.find(params[:category_id])
-    @products = Product.sort_by_price
+    @products = @category.products.sort_by_price
   end
 
   def new

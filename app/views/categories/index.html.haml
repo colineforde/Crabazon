@@ -16,7 +16,7 @@
         = flash[:error]
     .col-sm-12
       %h1.text-center.index-header Welcome to our store!
-    .col-lg-3.col-md-4.col-sm-6-col-xs-12
+    .col-sm-12
       - @categories.each do |category|
         %h4
           %a{:href => category_path(category)}= category.name
