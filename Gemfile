@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.2.2'
 
 gem 'rails'
 gem 'pg'
 gem 'faker'
+# For mailer
 gem 'letter_opener'
 gem 'launchy'
 gem 'sidekiq'
@@ -20,9 +22,10 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'table_print'
 
-# For mailer
-gem 'letter_opener'
+group :production do 
+	gem 'rails_12factor'
 
+end
 
 group :development, :test do
   gem 'pry-rails'
