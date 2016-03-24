@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :products
   end
   
+  post 'visitors/contact', to: 'visitors#contact'
+  get 'visitors', to: 'visitors#index'
+
   root 'index#index'
 
   get 'index' => 'index#index', as: :index

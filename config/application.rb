@@ -4,6 +4,8 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
+require_relative '../app/workers/postman'
+
 module Shoppe
   class Application < Rails::Application
     config.generators.helper = false
