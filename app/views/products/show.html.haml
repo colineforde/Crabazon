@@ -10,3 +10,6 @@
         %p= @product.description
       %p.index-qty
         Qty: #{@product.quantity}
+      Categories: 
+      - @product.categories.each do |category|
+        %h5= category.name

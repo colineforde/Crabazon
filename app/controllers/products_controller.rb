@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:category_id])
     @product = Product.new(product_params)
     if @product.save
+      ProductCategory.create!(product_id: @product.id, category_id: @category.id)
       flash[:success] = "Product successfully created!"
       redirect_to "/admin"
     else
