@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'pg'
 gem 'faker'
-gem 'letter_opener'
-gem 'launchy'
-gem 'sidekiq'
 
 gem 'uglifier'
 gem 'thin'
@@ -21,8 +18,8 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem 'table_print'
 
 # For mailer (development)
-gem 'letter_opener'
-gem 'launchy'
+# gem 'letter_opener'
+# gem 'launchy'
 
 gem 'sidekiq'
 
