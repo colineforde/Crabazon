@@ -4,6 +4,7 @@
       - if !current_user
         = link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product'
         = link_to 'User Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product'
+        = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
       - elsif current_user.admin?
         = link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product'
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
@@ -13,6 +14,9 @@
       = link_to 'Contact Us', visitors_contact_path, class: 'btn btn-success navbar-btn add-product'
 .container
   .row
+    - if flash[:success]
+      #flash.success.text-center
+        = flash[:success]
     - if flash[:error]
       #flash.error.text-center
         = flash[:error]

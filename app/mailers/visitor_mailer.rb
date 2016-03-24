@@ -1,10 +1,21 @@
 class VisitorMailer < ApplicationMailer
-	def contact_email(username, email, message)
-    @username = username
+  default from: "from@example.com"
+  
+  def contact_email(name, email, message)
+    @name = name
     @email = email
     @message = message
-    mail(from: @email,
-         to: 'coline.forde@gmail.com',
-         subject: 'New Visitor\'s Email')
+
+    mail to: 'baronk0401@gmail.com',
+         from: @email,
+         subject: 'New Visitor\'s email'
+  end
+
+  def welcome_new_user(user)
+    @user = user
+
+    mail from: 'baronk0401@gmail.com',
+         to: @user.email,
+         subject: 'Welcome to store!'
   end
 end

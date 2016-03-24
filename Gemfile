@@ -20,6 +20,12 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'table_print'
 
+# For mailer
+gem 'letter_opener'
+gem 'launchy'
+
+gem 'sidekiq'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
