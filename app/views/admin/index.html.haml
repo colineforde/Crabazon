@@ -21,7 +21,11 @@
         %tbody
           - @categories.each do |category|
             %tr
-              %td= category.name
+              %td
+                = category.name
+                = link_to new_category_product_path(category), class: 'btn btn-success navbar-btn add-product' do
+                  %i.glyphicon.glyphicon-plus
+                  %span Add Product
               - category.products.each do |product|
                 %tr
                   %td= product.name
