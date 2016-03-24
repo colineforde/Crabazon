@@ -22,9 +22,7 @@ gem 'table_print'
 
 # For mailer
 gem 'letter_opener'
-gem 'launchy'
 
-gem 'sidekiq'
 
 group :development, :test do
   gem 'pry-rails'
