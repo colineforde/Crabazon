@@ -34,12 +34,25 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    if @category.update(product_params)
+    if @category.update(category_params)
       flash[:success] = "Category successfully updated!"
       redirect_to "/admin"
     else
       render 'edit'
     end
   end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:success] = "Category successfully deleted!"
+    redirect_to '/admin'
+  end
+
+  private
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
 
 end
