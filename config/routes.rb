@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   resources :admin
   post 'visitors', to: 'visitors#contact'
   get 'visitors/contact', to: 'visitors#contact' 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   
   post 'visitors/contact', to: 'visitors#contact'
   get 'visitors', to: 'visitors#index'
+  
+  devise_for :users, controllers: { registrations: "registrations" }
 
   root 'index#index'
 
