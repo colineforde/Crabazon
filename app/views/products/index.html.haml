@@ -32,6 +32,7 @@
               %p.index-qty
                 Qty: #{product.quantity}
               %p
+                Categories:
                 - product.categories.each do |category|
                   %a{:href => category_path(category)}
                     \##{category.name}
