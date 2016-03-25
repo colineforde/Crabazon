@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :categories do
-    resources :products, except: [:new, :create]
+    resources :products, only: :index
   end
 
-  resources 'products', only: [:new, :create]
+  resources 'products', except: :index
   
   post 'visitors/contact', to: 'visitors#contact'
   get 'visitors', to: 'visitors#index'
