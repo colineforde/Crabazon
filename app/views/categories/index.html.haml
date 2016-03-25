@@ -3,12 +3,14 @@
     .nav.navbar-nav.navbar-right
       - if !current_user
         = link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product'
-        = link_to 'User Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product'
+        = link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product'
       - elsif current_user.admin?
         = link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product'
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
+      = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
+      = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
 .container
   .row
     - if flash[:error]

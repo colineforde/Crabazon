@@ -6,7 +6,7 @@ class VisitorMailer < ApplicationMailer
     @email = email
     @message = message
 
-    mail to: 'baronjetso@gmail.com',
+    mail to: 'barontesting4rails@gmail.com',
          from: @email,
          subject: 'New Visitor\'s email'
   end
