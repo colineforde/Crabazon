@@ -31,7 +31,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   
   config.include Devise::TestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :view
+  config.include Devise::TestHelpers, type: :helper
 
   config.infer_spec_type_from_file_location!
 

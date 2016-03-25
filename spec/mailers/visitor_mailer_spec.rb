@@ -1,5 +1,9 @@
 require "rails_helper"
 
 RSpec.describe VisitorMailer, type: :mailer do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it 'sends an email after they have register an account' do
+    expect { user = FactoryGirl.create(:user) }
+      .to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
 end
