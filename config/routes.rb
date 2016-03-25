@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   # devise_for :users
-  resources :admin
+  resources :admin, only: :index
 
   namespace 'categories' do 
     get 'search'
+  end
+
+  namespace 'users' do 
+    get 'cart'
   end
 
   resources :categories do
