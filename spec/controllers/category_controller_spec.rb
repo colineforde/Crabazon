@@ -2,12 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
 
-  admin = User.create(username: "tim",email: "tim@tim.com",password: "timtim" ,admin: true )
+  # admin = User.create(username: "tim",email: "tim@tim.com",password: "timtim" ,admin: true )
 
-
-  before :each do
-    sign_in admin
-  end
+  # before :each do
+  #   sign_in admin
+  # end
   
   describe 'GET #new' do 
     it 'assigns a new category to @category' do 
