@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require select2
 //= require data-confirm-modal
+//= require_tree .
