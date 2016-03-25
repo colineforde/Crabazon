@@ -26,6 +26,9 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # Include Factory Girl syntax to simplify calls to factories
+  config.include FactoryGirl::Syntax::Methods
   
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    if current_user.admin?
+    if current_user.try(:admin?)
       @category = Category.new
     else
       redirect_to '/'

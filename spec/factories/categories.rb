@@ -1,5 +1,6 @@
-FactoryGirl.define do
-  factory :category do
-    name "MyString"
-  end
-end
+# FactoryGirl.define do
+#   factory :admin do
+#     email "tim@tim.com"
+#     password
+#   end
+# end
