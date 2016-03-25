@@ -8,6 +8,7 @@ gem 'launchy'
 gem 'sidekiq'
 # select2 search box
 gem 'select2-rails'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'uglifier'
 gem 'thin'
@@ -34,6 +35,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'dotenv-rails'
 end
 
