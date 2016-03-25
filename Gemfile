@@ -4,6 +4,8 @@ ruby '2.2.2'
 gem 'rails'
 gem 'pg'
 gem 'faker'
+gem 'launchy'
+gem 'sidekiq'
 # select2 search box
 gem 'select2-rails'
 
@@ -21,9 +23,7 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem 'table_print'
 
 group :production do 
-	gem 'rails_12factor'
-	gem 'launchy'
-	gem 'sidekiq'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -34,8 +34,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'launchy'
-  gem 'sidekiq'
+  # gem 'launchy'
+  # gem 'sidekiq'
   gem 'dotenv-rails'
 end
 
