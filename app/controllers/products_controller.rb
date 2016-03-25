@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if current_user.admin?
+    if current_user.try(:admin?)
       # @category = Category.find(params[:category_id])
       @product = Product.new
     else
