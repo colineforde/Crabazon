@@ -22,27 +22,26 @@
     .col-sm-12
       %h1.text-center.index-header Welcome to our store!
     .col-sm-12
-      - @categories.each do |category|
-        - category.products.each do |product|
-          .col-lg-3.col-md-4.col-sm-6-col-xs-12.pull-left.clear-fix.index-product
-            .product-box
-              .index-price
-                %h2.text-right
-                  %sup.index-dollar $
-                  = product.price
-              %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
-                %h4
-                  = link_to "#{product.name}", category_product_path(category, product)
-                .index-description
-                  %p
-                    = product.description
-                %p.index-qty
-                  Qty: #{product.quantity}
+      - @products.each do |product|
+        .col-lg-3.col-md-4.col-sm-6-col-xs-12.pull-left.clear-fix.index-product
+          .product-box
+            .index-price
+              %h2.text-right
+                %sup.index-dollar $
+                = product.price
+            %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
+              %h4
+                = link_to "#{product.name}", product_path(product)
+              .index-description
                 %p
-                  Categories:
-                  - product.categories.each do |category|
-                    %a{:href => category_path(category)}
-                      \##{category.name}
-                - if current_user && !current_user.admin?
-                  %p
-                    %button.btn.btn-success.navbar-btn.add-product Add to  cart
+                  = product.description
+              %p.index-qty
+                Qty: #{product.quantity}
+              %p
+                Categories:
+                - product.categories.each do |category|
+                  %a{:href => category_path(category)}
+                    \##{category.name}
+              - if current_user && !current_user.admin?
+                %p
+                  %button.btn.btn-success.navbar-btn.add-product Add to  cart

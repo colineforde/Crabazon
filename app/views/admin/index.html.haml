@@ -15,22 +15,29 @@
       - if flash[:success]
         #flash.success.text-center
           = flash[:success]
-      %table.table.table-striped.table-border
+      %table.table.table-border.table-hover.table-responsive
         %thead
-          %tr
-            %th Categories
-            %th.text-center Price
-            %th.text-center Quantity
+          %tr.table-active
+            %th.text-left Categories
+            %th.text-left Product Name
+            %th.text-left Price ($USD)
+            %th.text-left Quantity
         %tbody
           - @categories.each do |category|
             %tr
+              %th.text-left= category.name
               %td
-                = category.name
+              %td
+              %td
+              %td.text-right
                 = link_to 'Delete Category', category_path(category), :method => 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this category? This action can not be undone.'}
-              - category.products.each do |product|
-                %tr
-                  %td= product.name
-                  %td.text-center= product.price
-                  %td.text-center= product.quantity
-                  %td.text-right= link_to 'Edit', edit_category_product_path(category, product), class: 'btn btn-primary'
-                  %td.text-left= link_to 'Delete', category_product_path(category, product), :method => 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this product? This action can not be undone.'}
+            - category.products.each do |product|
+              %tr
+                %th.text-center
+                %td.text-left= product.name
+                %td.text-left
+                  $#{product.price}
+                %td.text-left= product.quantity
+                %td.text-right
+                  = link_to 'Edit', edit_product_path(product), class: 'btn btn-primary'
+                  = link_to 'Delete', product_path(product), :method => 'delete', class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this product? This action can not be undone.'}
