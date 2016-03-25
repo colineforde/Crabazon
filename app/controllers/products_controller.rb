@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def new
     if current_user.admin?
-      @category = Category.find(params[:category_id])
+      # @category = Category.find(params[:category_id])
       @product = Product.new
     else
       redirect_to '/'
@@ -23,10 +23,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id])
+    # @category = Category.find(params[:category_id])
     @product = Product.new(product_params)
     if @product.save
-      ProductCategory.create!(product_id: @product.id, category_id: @category.id)
+      params[:category_ids].each do |category_id|
+        ProductCategory.create!(product_id: @product.id, category_id: category_id)
+      end
       flash[:success] = "Product successfully created!"
       redirect_to "/admin"
     else
@@ -57,5 +59,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price, :quantity, :product_image)
   end
-
 end

@@ -3,19 +3,24 @@ class UsersController < ApplicationController
 	def index				 
 	end
 
-	def sign_in
-		if current_user
-			if current_user.admin?
-				@products = Product.sort_by_price
-				redirect_to '/admin'
-			else
-				@products = Product.sort_by_price
-				redirect_to '/'
-			end
-		end	
-	end
 
-	# def welcome_email
-	# 	mail(to: self.email, subject: "Welcome to the Shoppe! Thanks for signing up.")
+	def create
+	    @user = User.new(params[:user])
+	 
+	    respond_to do |format|
+	      if @user.save
+	        # Tell the UserMailer to send a welcome email after save
+	        VisitorMailer.welcome_email(@user).deliver
+	 
+	        format.html { redirect_to(@user, notice: 'User was successfully created.') }
+	        format.json { render json: @user, status: :created, location: @user }
+	      else
+	        format.html { render action: 'new' }
+	        format.json { render json: @user.errors, status: :unprocessable_entity }
+	      end
+	    end
+	  end
 	# end
 end
+
+

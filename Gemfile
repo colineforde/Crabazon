@@ -6,8 +6,7 @@ gem 'pg'
 gem 'faker'
 # For mailer
 gem 'letter_opener'
-gem 'launchy'
-gem 'sidekiq'
+gem 'select2-rails'
 
 gem 'uglifier'
 gem 'thin'
@@ -24,7 +23,8 @@ gem 'table_print'
 
 group :production do 
 	gem 'rails_12factor'
-
+	gem 'launchy'
+	gem 'sidekiq'
 end
 
 group :development, :test do
@@ -35,5 +35,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'sidekiq'
 end
 

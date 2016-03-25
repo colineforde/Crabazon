@@ -11,13 +11,23 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def search 
+    #lists the categories that match the query
+    if params[:q].present?
+      @categories = Category.where("name ILIKE ? ", "%#{params[:q]}%")
+    else
+      @categories = Category.limit(10)
+    end
+    render json: @categories
+  end
+  
   def show
     @category = Category.find(params[:id])
     redirect_to category_products_path(@category)
   end
 
   def edit
-  	@category = Category.find(params[:id])
+    @category = Category.find(params[:id])
     render 'edit'
   end
 
@@ -42,6 +52,7 @@ class CategoriesController < ApplicationController
     end
   end
 
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
@@ -53,6 +64,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
-
 end

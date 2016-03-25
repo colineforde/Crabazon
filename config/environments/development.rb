@@ -4,7 +4,7 @@ Rails.application.configure do
   # to be appraised of mailing errors
   config.action_mailer.raise_delivery_errors = true
   # to deliver to the browser instead of email
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -45,6 +45,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # to deliver to the browser instead of email
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
   
 end
