@@ -4,6 +4,8 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 require_relative '../app/workers/postman'
 
 module Shoppe

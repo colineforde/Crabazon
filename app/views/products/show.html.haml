@@ -5,11 +5,14 @@
         %sup.index-dollar $
         = @product.price
     %img.index-image{:alt => "#{@product.name} Image", :src => @product.product_image}
-      %h4= @product.name
+      %h4
+        = @product.name
       .index-description
-        %p= @product.description
+        %p
+          = @product.description
       %p.index-qty
         Qty: #{@product.quantity}
-      Categories: 
+      Categories:
       - @product.categories.each do |category|
-        %h5= category.name
+        %a{:href => category_path(category)}
+          \##{category.name}

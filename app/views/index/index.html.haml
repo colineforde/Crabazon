@@ -3,14 +3,14 @@
     .nav.navbar-nav.navbar-right
       - if !current_user
         = link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product'
-        = link_to 'User Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product'
-        = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
+        = link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product'
       - elsif current_user.admin?
         = link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product'
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
+      = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
 .container
   .row
     - if flash[:success]
@@ -22,18 +22,24 @@
     .col-sm-12
       %h1.text-center.index-header Welcome to our store!
     .col-sm-12
-      - @products.each do |product|
-        .col-lg-3.col-md-4.col-sm-6-col-xs-12.pull-left.clear-fix.index-product
-          .product-box
-            .index-price
-              %h2.text-right
-                %sup.index-dollar $
-                = product.price
-            %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
-              %h4= product.name
-              .index-description
-                %p= product.description
-              %p.index-qty
-                Qty: #{product.quantity}
-
-
+      - @categories.each do |category|
+        - category.products.each do |product|
+          .col-lg-3.col-md-4.col-sm-6-col-xs-12.pull-left.clear-fix.index-product
+            .product-box
+              .index-price
+                %h2.text-right
+                  %sup.index-dollar $
+                  = product.price
+              %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
+                %h4
+                  = link_to "#{product.name}", category_product_path(category, product)
+                .index-description
+                  %p
+                    = product.description
+                %p.index-qty
+                  Qty: #{product.quantity}
+                %p
+                  Categories:
+                  - product.categories.each do |category|
+                    %a{:href => category_path(category)}
+                      \##{category.name}
