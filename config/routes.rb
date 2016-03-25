@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
   # devise_for :users
-  resources :admin
+  resources :admin, only: :index
 
   namespace 'categories' do 
     get 'search'
   end
 
-  resources :categories do
-    resources :products, except: [:new, :create]
+  namespace 'users' do 
+    get 'cart'
   end
 
-  resources 'products', only: [:new, :create]
+  resources :categories do
+    resources :products, only: :index
+  end
+
+  resources 'products', except: :index
   
   post 'visitors/contact', to: 'visitors#contact'
   get 'visitors', to: 'visitors#index'

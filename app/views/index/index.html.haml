@@ -43,3 +43,6 @@
                   - product.categories.each do |category|
                     %a{:href => category_path(category)}
                       \##{category.name}
+                - if current_user && !current_user.admin?
+                  %p
+                    %button.btn.btn-success.navbar-btn.add-product Add to  cart
