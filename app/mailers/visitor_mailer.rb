@@ -5,7 +5,7 @@ class VisitorMailer < ApplicationMailer
     @email = email
     @message = message
 
-    mail to: 'baronk0401@gmail.com',
+    mail to: 'barontesting4rails@gmail.com',
          from: @email,
          subject: 'New Visitor\'s email'
   end
@@ -13,6 +13,7 @@ class VisitorMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     @url  = 'http://sleepy-garden-69649.herokuapp.com/users/sign_in'
-    mail(to: @user.email, subject: 'Welcome to the Shoppe!')
+    mail(to: @user.email, subject: 'Welcome Email. Thanks for registering with rails-online-shop.')
   end
+
 end

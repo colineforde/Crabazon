@@ -10,11 +10,11 @@
 User.create!(username: 'tim', email: 'tim@tim.com', password: 'timtim', admin: true)
 User.create!(username: 'tom', email: 'tom@tom.com', password: 'tomtom')
 
-cat1 = Category.create!(name: "apple")
-cat2 = Category.create!(name: "orange")
-cat3 = Category.create!(name: "banana")
-cat4 = Category.create!(name: "pear")
-cat5 = Category.create!(name: "pineapple")
+cat1 = Category.create!(name: "Electronics & Computers")
+cat2 = Category.create!(name: "Clothing, Shoes & Jewelry")
+cat3 = Category.create!(name: "Home, Garden & Tools")
+cat4 = Category.create!(name: "Beauty, Health & Grocery")
+cat5 = Category.create!(name: "Toys, Kids & Baby")
 
 
 # arr = [cat1.id, cat2.id, cat3.id]

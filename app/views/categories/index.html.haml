@@ -17,6 +17,9 @@
     .col-sm-12
       %h1.text-center.index-header Welcome to our store!
     .col-sm-12
+      %h2 Checkout these categories:
       - @categories.each do |category|
-        %h4
-          %a{:href => category_path(category)}= category.name
+        %ul
+          %li
+            %h4
+              %a{:href => category_path(category)}= category.name

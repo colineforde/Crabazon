@@ -1,6 +1,7 @@
-
+/dump.rdb
 /.bundle
 
 /log/*
 !/log/.keep
 /tmp
+.env

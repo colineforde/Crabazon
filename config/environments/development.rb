@@ -4,6 +4,7 @@ Rails.application.configure do
   # to be appraised of mailing errors
   config.action_mailer.raise_delivery_errors = true
   # to deliver to the browser instead of email
+
   # config.action_mailer.delivery_method = :letter_opener
 
   # In the development environment your application's code is reloaded on
@@ -46,5 +47,16 @@ Rails.application.configure do
 
   # to deliver to the browser instead of email
   # config.action_mailer.delivery_method = :letter_opener
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => ENV['GMAIL_USERNAME'],
+   :password             => ENV['GMAIL_PASSWORD'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
   
 end

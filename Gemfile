@@ -4,8 +4,7 @@ ruby '2.2.2'
 gem 'rails'
 gem 'pg'
 gem 'faker'
-# For mailer
-gem 'letter_opener'
+# select2 search box
 gem 'select2-rails'
 
 gem 'uglifier'
@@ -37,5 +36,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'sidekiq'
+  gem 'dotenv-rails'
 end
 
