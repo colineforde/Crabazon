@@ -1,24 +1,49 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="nav navbar-nav navbar-right">
-      <%= link_to 'Product View', index_path, class: 'btn btn-default navbar-btn add-product' %>
-      <%= link_to new_category_path, class: 'btn btn-success navbar-btn add-product' do %>
-        <i class="glyphicon glyphicon-plus"></i>
-        <span>New Category</span>
+      <% if !current_user %>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% elsif current_user.admin? %>
+        <%= link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% else %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
       <% end %>
+      <%= link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product' %>
+      <%= link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product' %>
     </div>
   </div>
 </nav>
+<div class="container">
+  <div class="row">
+    <% if flash[:error] %>
+      <div class="error text-center" id="flash">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <div class="col-sm-12">
+      <h1 class="text-center index-header">Contact Us</h1>
 
-<form action="visitors/contact" method="post">
-  <label for="name">Name: </label><br>
-  <input type="text" name="name" placeholder="Name"><br>
-  <label for="email">Email: </label><br>
-  <input type="text" name="email" placeholder="Email"><br>
-  <label for="message">Message: </label><br>
-  <textarea name="message" placeholder="Your message"></textarea><br>
-  <input type="submit" value="Submit">
-</form>
-<br><br>
-<p>Thanks for your opinion. Please check your email for response.</p>
-<p>From Support Team.</p>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+
+            <form action="visitors/contact" method="post">
+              <label for="name">Name: </label><br>
+              <input type="text" name="name" placeholder="Name"><br>
+              <label for="email">Email: </label><br>
+              <input type="text" name="email" placeholder="Email"><br>
+              <label for="message">Message: </label><br>
+              <textarea name="message" placeholder="Your message"></textarea><br>
+              <input type="submit" value="Submit">
+            </form>
+            <br><br>
+            <p>Thanks for your opinion. Please check your email for response.</p>
+            <p>From Support Team.</p>
+
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+
+
