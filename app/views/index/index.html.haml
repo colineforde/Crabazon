@@ -9,6 +9,7 @@
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
+        = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
 .container
@@ -32,7 +33,7 @@
                   = product.price
               %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
                 %h4
-                  = link_to "#{product.name}", category_product_path(category, product)
+                  = link_to "#{product.name}", product_path(product)
                 .index-description
                   %p
                     = product.description
@@ -45,4 +46,4 @@
                       \##{category.name}
                 - if current_user && !current_user.admin?
                   %p
-                    %button.btn.btn-success.navbar-btn.add-product Add to  cart
+                    %button.btn.btn-success.navbar-btn.add-product Add to cart
