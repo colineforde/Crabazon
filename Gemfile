@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
+ruby '2.2.2'
 
 gem 'rails'
 gem 'pg'
 gem 'faker'
+# select2 search box
+gem 'select2-rails'
 
 gem 'uglifier'
 gem 'thin'
@@ -17,11 +20,11 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'table_print'
 
-# For mailer (development)
-# gem 'letter_opener'
-# gem 'launchy'
-
-gem 'sidekiq'
+group :production do 
+	gem 'rails_12factor'
+	gem 'launchy'
+	gem 'sidekiq'
+end
 
 group :development, :test do
   gem 'pry-rails'
@@ -31,6 +34,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'sidekiq'
   gem 'dotenv-rails'
 end
 
