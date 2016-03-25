@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 # Dotenv::Railtie.load
 
-require_relative '../app/workers/postman'
+# require_relative '../app/workers/postman'
 
 module Shoppe
   class Application < Rails::Application

@@ -23,6 +23,8 @@ gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 gem 'table_print'
 
+gem "letter_opener", :group => :development
+
 group :production do 
   gem 'rails_12factor'
 end
