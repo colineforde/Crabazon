@@ -6,9 +6,7 @@ Rails.application.routes.draw do
     get 'search'
   end
 
-  namespace 'users' do 
-    get 'cart'
-  end
+  resources 'carts', only: :index
 
   resources :categories do
     resources :products, only: :index
