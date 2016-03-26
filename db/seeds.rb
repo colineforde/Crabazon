@@ -10,6 +10,7 @@
 User.create!(username: 'tim', email: 'tim@tim.com', password: 'timtim', admin: true)
 User.create!(username: 'tom', email: 'tom@tom.com', password: 'tomtom')
 
+
 cat1 = Category.create!(name: "Electronics & Computers")
 cat2 = Category.create!(name: "Clothing, Shoes & Jewelry")
 cat3 = Category.create!(name: "Home, Garden & Tools")
