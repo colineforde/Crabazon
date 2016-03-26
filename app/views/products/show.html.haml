@@ -26,7 +26,7 @@
             %p
               = @product.description
           %p.index-qty
-            Qty: #{@product.quantity}
+            Qty: #{@product.inventory}
           Categories:
           - @product.categories.each do |category|
             %a{:href => category_path(category)}

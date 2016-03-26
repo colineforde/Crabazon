@@ -31,8 +31,8 @@
             .col-md-8
               = f.text_field :price, class: 'form-control'
           .form-group
-            = f.label :quantity, 'Product Quantity:', class: 'col-lg-4 control-label'
+            = f.label :inventory, 'Product Inventory Count:', class: 'col-lg-4 control-label'
             .col-md-8
-              = f.text_field :quantity, class: 'form-control'
+              = f.text_field :inventory, class: 'form-control'
           .col-md-offset-4.col-md-8.update-button
             = f.submit 'Update Product', class: 'btn btn-primary btn-lg center-block'

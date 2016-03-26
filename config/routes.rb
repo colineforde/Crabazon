@@ -6,9 +6,6 @@ Rails.application.routes.draw do
     get 'search'
   end
 
-  get 'cart' => 'cart#index', :as => 'cart_index'
-  post 'cart/add/:id' => 'cart#add', :as => 'cart_add'
-  delete 'cart/remove(/:id(/:all))' => 'cart#delete', :as => 'cart_delete'
 
   resources :categories do
     resources :products, only: :index
@@ -20,6 +17,12 @@ Rails.application.routes.draw do
   get 'visitors', to: 'visitors#index'
   
   devise_for :users, controllers: { registrations: "registrations" }
+
+  resources :users do 
+    get 'orders' => 'orders#index', :as => 'orders_index'
+    post 'order/add/:id' => 'orders#add', :as => 'orders_add'
+    delete 'orders/remove(/:id(/:all))' => 'orders#delete', :as => 'orders_delete'
+  end
 
   root 'index#index'
 
