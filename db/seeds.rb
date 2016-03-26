@@ -21,9 +21,9 @@ cat5 = Category.create!(name: "Toys, Kids & Baby")
 5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, inventory: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
 5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, inventory: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
 Order.create!(user_id: 2)
-OrderDetail.create!(order_id: 1, product_id: 1)
-OrderDetail.create!(order_id: 1, product_id: 2)
-OrderDetail.create!(order_id: 1, product_id: 3)
+OrderProduct.create!(order_id: 1, product_id: 1)
+OrderProduct.create!(order_id: 1, product_id: 2)
+OrderProduct.create!(order_id: 1, product_id: 3)
 
 x = 1
 while x < 5
