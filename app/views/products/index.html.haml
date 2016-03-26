@@ -27,7 +27,7 @@
               = product.price
           %img.index-image{:alt => "#{product.name} Image", :src => product.product_image}
             %h4
-              = link_to "#{product.name}", category_product_path(@category, product)
+              = link_to "#{product.name}", product_path(product)
             .index-description
               %p
                 = product.description

@@ -18,8 +18,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:category_id])
     @product = Product.find(params[:id])
+    @categories = @product.categories
   end
 
   def create
@@ -38,8 +38,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:category_id])
     @product = Product.find(params[:id])
+    @categories = @product.categories
     if @product.update(product_params)
       flash[:success] = "Product successfully updated!"
       redirect_to "/admin"

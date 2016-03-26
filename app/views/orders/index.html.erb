@@ -1,0 +1,66 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-right">
+      <% if !current_user %>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% elsif current_user.admin? %>
+        <%= link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+      <% else %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+      <% end %>
+      <%= link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product' %>
+      <%= link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product' %>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <% if flash[:success] %>
+      <div class="success text-center" id="flash">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="error text-center" id="flash">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <div class="col-sm-12">
+      <h1 class="text-center index-header">Welcome to our store!</h1>
+        <h3>Here is your order smmary: </h3>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Price ($USD)</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cart.products.each_with_index do |product, index| %>
+                  <tr>
+                    <th scope="row">index</th>
+                    <td><img alt="<%= product.name %> Image" src="<%= product.product_image %>" class="index-image"></td>
+                    <td><%= link_to "#{product.name}", product_path(product) %></td>
+                    <td><%= product.price %></td>
+                    <td>Quantity: </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div>
+              <p>Total: <%= @cart.products.reduce { |product| product.price } %></p>
+              <button class="btn btn-primary navbar-btn add-product">Checkout</button>
+            </div>
+      
+    </div>
+  </div>
+</div>
+
+
