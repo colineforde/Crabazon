@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get 'search'
   end
 
-  resources 'carts', only: :index
+  get 'cart' => 'cart#index', :as => 'cart_index'
+  post 'cart/add/:id' => 'cart#add', :as => 'cart_add'
+  delete 'cart/remove(/:id(/:all))' => 'cart#delete', :as => 'cart_delete'
 
   resources :categories do
     resources :products, only: :index
