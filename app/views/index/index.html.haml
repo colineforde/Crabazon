@@ -9,7 +9,7 @@
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
-        = link_to 'My Cart', user_orders_index_path(current_user), class: 'btn btn-success navbar-btn add-product'
+        = link_to 'My Cart', user_order_order_products_path(@current_user, @order), class: 'btn btn-success navbar-btn add-product'
       = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
 .container
@@ -45,4 +45,4 @@
                     \##{category.name}
               - if current_user && !current_user.admin?
                 %p
-                  = link_to "Add to cart", user_orders_index_path, class: 'btn btn-success navbar-btn add-product'
+                  = link_to "Add to cart", class: 'btn btn-success navbar-btn add-product'

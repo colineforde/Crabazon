@@ -18,9 +18,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :users do 
-    get 'orders' => 'orders#index', :as => 'orders_index'
-    post 'order/add/:id' => 'orders#add', :as => 'orders_add'
-    delete 'orders/remove(/:id(/:all))' => 'orders#delete', :as => 'orders_delete'
+    resources :orders do
+      resources :order_products
+      put 'order_products/:id/add' => 'order_products#add_quantity', :as => 'add_quantity'
+      put 'order_products/:id/reduce' => 'order_products#reduce_quantity', :as => 'reduce_quantity'
+    end
+    # get 'orders' => 'orders#index', :as => 'orders_index'
+    # post 'order/add/:id' => 'orders#add', :as => 'orders_add'
+    # delete 'orders/remove(/:id(/:all))' => 'orders#delete', :as => 'orders_delete'
   end
 
   root 'index#index'

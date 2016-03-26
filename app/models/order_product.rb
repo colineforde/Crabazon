@@ -14,4 +14,12 @@ class OrderProduct < ActiveRecord::Base
 		self.product.product_image
 	end
 
+	def inventory
+		self.product.inventory
+	end
+
+	def add_quantity
+		
+	end
+
 end

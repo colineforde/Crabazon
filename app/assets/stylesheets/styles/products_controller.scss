@@ -118,6 +118,14 @@ div.product-box:hover div.index-price {
   font-size: 1.25em;
 }
 
+.img-thumbnail {
+  width: 150px;
+  height: 150px;
+}
+
+
+
+
 @media (max-width: 1199px) {
   .index-price {
     margin-left: 162px;
@@ -154,4 +162,5 @@ div.product-box:hover div.index-price {
     margin: 0 auto;
     margin-top: -100px;
   }
+
 }

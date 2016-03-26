@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
 	def index
-		@order = Order.last
+    @current_user = User.second
+		@order = @current_user.orders.last
 	end
 end

@@ -52,12 +52,16 @@
                 <td><%= order_product.inventory %></td>
                 <td>
                   <div class="text-center">
-                    <button class="btn btn-primary-outline"><a href="">+</a></button>
+                    <button class="btn btn-primary-outline">
+                      <%= link_to '+',user_order_add_quantity_path(order_id: @order.id, id: order_product.id), method: 'add_quantity' %>
+                    </button>
                     <input size='2' type="text" value="<%= order_product.quantity%>">
-                    <button class="btn btn-primary-outline"><a href="">-</a></button>
+                    <button class="btn btn-primary-outline">
+                      <%= link_to '-',user_order_reduce_quantity_path(order_id: @order.id, id: order_product.id), method: 'reduce_quantity' %>
+                    </button>
                   </div>
                 </td>
-                <td class="text-center"><%= link_to 'Remove',user_order_order_product_path(order_id: @order.id, id: order_product.product.id), class: 'btn btn-danger' %></td>
+                <td class="text-center"><%= link_to 'Remove',user_order_order_product_path(order_id: @order.id, id: order_product.id), method: 'delete', class: 'btn btn-danger' %></td>
               </tr>
             <% end %>
             <tr>
