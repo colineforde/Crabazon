@@ -7,7 +7,7 @@ RSpec.describe ProductsController, type: :controller do
     admin = FactoryGirl.create(:admin)
     sign_in :user, admin # sign_in(scope, resource)
     @category = Category.create(name: "test_category")
-    @product = @category.products.create!(name: "testing1", description: "testing description", price: 100, quantity: 10)
+    @product = @category.products.create!(name: "testing1", description: "testing description", price: 100, inventory: 10)
   end
   
   describe 'GET #new' do 
@@ -24,7 +24,7 @@ RSpec.describe ProductsController, type: :controller do
   describe 'POST #create' do 
     it 'create creates a new Products' do
       before_count = Product.count
-      @new_product = Product.create(name: "new_testing", description: "testing description 2", price: 10, quantity: 20)
+      @new_product = Product.create(name: "new_testing", description: "testing description 2", price: 10, inventory: 20)
       expect(Product.count).to_not eq(before_count)
     end
   end

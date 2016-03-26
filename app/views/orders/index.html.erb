@@ -43,19 +43,19 @@
                 </tr>
               </thead>
               <tbody>
-                <% @cart.products.each_with_index do |product, index| %>
+                <% @order.products.each_with_index do |product, index| %>
                   <tr>
-                    <th scope="row">index</th>
+                    <th scope="row"><%= index + 1 %></th>
                     <td><img alt="<%= product.name %> Image" src="<%= product.product_image %>" class="index-image"></td>
                     <td><%= link_to "#{product.name}", product_path(product) %></td>
                     <td><%= product.price %></td>
-                    <td>Quantity: </td>
+                    <td>Quantity: <%= product.order_details.quantity %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
             <div>
-              <p>Total: <%= @cart.products.reduce { |product| product.price } %></p>
+              <p>Grand Total: <%= @order.products.map(&:price).reduce(:+) %></p>
               <button class="btn btn-primary navbar-btn add-product">Checkout</button>
             </div>
       

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	has_many :orders
+
+	
 	def index				 
 	end
 	# def sign_in

@@ -17,10 +17,10 @@ cat3 = Category.create!(name: "Home, Garden & Tools")
 cat4 = Category.create!(name: "Beauty, Health & Grocery")
 cat5 = Category.create!(name: "Toys, Kids & Baby")
 
-5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
-5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
-5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, quantity: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
-Order.create!(user_id: 1)
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, inventory: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, inventory: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
+5.times{Product.create!(name: Faker::Beer.name, description: Faker::Hipster.sentence, price: Faker::Commerce.price, inventory: Faker::Number.between(1,20), product_image: Faker::Avatar.image) }
+Order.create!(user_id: 2)
 OrderDetail.create!(order_id: 1, product_id: 1)
 OrderDetail.create!(order_id: 1, product_id: 2)
 OrderDetail.create!(order_id: 1, product_id: 3)

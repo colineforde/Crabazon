@@ -37,7 +37,7 @@
                 %p
                   = product.description
               %p.index-qty
-                Qty: #{product.quantity}
+                Qty: #{product.inventory}
               %p
                 Categories:
                 - product.categories.each do |category|
@@ -45,4 +45,4 @@
                     \##{category.name}
               - if current_user && !current_user.admin?
                 %p
-                  %button.btn.btn-success.navbar-btn.add-product Add to  cart
+                  = link_to "Add to cart", user_orders_index_path, class: 'btn btn-success navbar-btn add-product'
