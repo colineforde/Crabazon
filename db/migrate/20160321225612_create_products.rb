@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.integer :price
       t.string :description
-      t.integer :quantity
+      t.integer :inventory
       t.string :product_image
 
       t.timestamps null: false
