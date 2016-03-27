@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders
+
+  def cart
+  	Order.where(complete: false, user_id: id).first
+  end
 end

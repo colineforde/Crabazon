@@ -9,9 +9,11 @@
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
       - else
         = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product'
-        = link_to 'My Cart', user_orders_index_path(current_user), class: 'btn btn-success navbar-btn add-product'
+        = link_to "My Cart (#{@cart.order_products.count})", user_orders_path(current_user), class: 'btn btn-success navbar-btn add-product', id: 'cart'
       = link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product'
       = link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product'
+
+%div{class: "modal fade", id: "myModal", tabindex: "-1", role: "dialog"}
 .container
   .row
     - if flash[:success]
@@ -45,4 +47,7 @@
                     \##{category.name}
               - if current_user && !current_user.admin?
                 %p
-                  %button.btn.btn-success.navbar-btn.add-product Add to  cart
+                  = form_for product, :url => cart_path(@cart.id),:method => :patch, html: { class: 'form-horizontal center add-to-cart'} do |f|
+                    = f.hidden_field :product_id, value: product.id
+                    .col-md-12.update-button
+                    = f.button 'Add to cart', class: 'btn btn-success navbar-btn add-product add-item'

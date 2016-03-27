@@ -1,0 +1,40 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+    </div>
+    <div class="modal-body">
+      <h3>Here is your order summary: </h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price ($USD)</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order.order_products.each_with_index do |order_product, index| %>
+                <tr>
+                  <th scope="row"><%=index + 1%></th>
+                  <td><img alt="<%= order_product.name %> Image" src="<%= order_product.product_image %>" class="index-image"></td>
+                  <td><%= link_to "#{order_product.name}", product_path(order_product.product) %></td>
+                  <td><%= order_product.price %></td>
+                  <td>Quantity: <%= order_product.quantity%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+          <div class="modal-footer">
+            <p>Grand Total: <%= @order.products.map(&:price).reduce(:+) %></p>
+            <button class="btn btn-primary navbar-btn add-product">Checkout</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+
