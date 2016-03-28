@@ -25,4 +25,10 @@ class CartController < ApplicationController
 		order_product = OrderProduct.find_or_create_by!(order_id: @order.id, product_id: params[:product][:product_id])
 		# render json: {count: @order.order_products.count} 
 	end
+
+	def removal
+		@order_product = OrderProduct.find_by(id: params[:order_product][:order_product_id], order_id: current_user.cart.id)
+		@order_product.destroy
+		redirect_to '/cart'
+	end
 end

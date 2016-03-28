@@ -67,7 +67,14 @@
                   <% end %>
                   </div>
                 </td>
-                <td class="text-center">Remove</td>
+
+                <td class="text-center">
+                  <%= form_for order_product, :url => cart_removal_path(order_product),:method => :delete, html: { class: 'form-horizontal center'} do |f| %>
+                  <%= f.hidden_field :order_product_id, value: order_product.id %>
+                    <div class="col-md-12 update-button"></div>
+                    <%= f.button 'Remove', class: 'btn btn-danger' %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
             <tr>

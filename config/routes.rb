@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :cart, only: [:update, :index] do
     post :increment, to: 'cart#increment'
     post :decrement, to: 'cart#decrement'
+    delete :removal, to: 'cart#removal'
   end
 
   resources :users do 
