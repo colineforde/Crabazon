@@ -1,0 +1,99 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-right">
+      <% if !current_user %>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% elsif current_user.admin? %>
+        <%= link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+      <% else %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+      <% end %>
+      <%= link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product' %>
+      <%= link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product' %>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <% if flash[:success] %>
+      <div class="success text-center" id="flash">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="error text-center" id="flash">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <div class="col-sm-12">
+      <h1 class="text-center index-header">Hi <%= current_user.email.capitalize %>, below is your order smmary</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-md-1">Item</th>
+              <th class="col-md-2">Image</th>
+              <th class="col-md-1">Product Name</th>
+              <th class="col-md-1">Price (USD)</th>
+              <th class="col-md-1">Stock left</th>
+              <th class="col-md-5 text-center">Quantity</th>
+              <th class="col-md-1"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.order_products.each_with_index do |order_product, index| %>
+              <tr>
+                <th scope="row"><%=index + 1%></th>
+                <td><img alt="<%= order_product.name %> Image" src="<%= order_product.product_image %>" class="img-thumbnail"></td>
+                <td><%= link_to "#{order_product.name}", product_path(order_product.product) %></td>
+                <td>$<%= order_product.price %></td>
+                <td><%= order_product.product.inventory %></td>
+                <td>
+                  <div class="text-center quantity">
+                    <%= form_for order_product, :url => cart_increment_path(@cart.id),:method => :post, html: { class: 'form-horizontal center add-quantity'} do |f| %>
+                  <%= f.hidden_field :order_product_id, value: order_product.id %>
+                    <div class="col-md-12 update-button"></div>
+                    <%= f.button '+', class: 'btn btn-primary-outline' %>
+                  <% end %>
+
+                    <input size='2' type="text" class="order-quantity <%=order_product.id%>" id="<%=order_product.id%>" value="<%= order_product.quantity%>">
+
+                    <%= form_for order_product, :url => cart_decrement_path(@cart.id),:method => :post, html: { class: 'form-horizontal center remove-quantity'} do |f| %>
+                  <%= f.hidden_field :order_product_id, value: order_product.id %>
+                    <div class="col-md-12 update-button"></div>
+                    <%= f.button '-', class: 'btn btn-primary-outline' %>
+                  <% end %>
+                  </div>
+                </td>
+                <td class="text-center">Remove</td>
+              </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td id="grand-total">Grand Total: $<span><%= @cart.order_products.map(&:price).reduce(:+) %></span></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button id="checkout-button" class="btn btn-primary navbar-btn add-product">Checkout</button></td>
+            </tr>
+          </tbody>
+        </table>
+      
+    </div>
+  </div>
+</div>
+
+

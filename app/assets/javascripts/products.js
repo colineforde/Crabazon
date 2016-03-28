@@ -1,7 +1,41 @@
 $(document).ready(function() {
 	createCategorySelectorBox();
 	addItemToCartSelector();
+	createAddProductListener();
+	createRemoveProductListener();
 });
+
+
+var createAddProductListener = function() {
+	$('.add-quantity').on('submit', function(e){
+		e.preventDefault();
+		var url = $(this).attr('action')
+		$.ajax({
+			url: url,
+			method: 'POST', 
+			data: $(this).serialize()
+		}).done(function(response){
+			$('input#10')
+			var orderProductId = $('input#' + response.id)
+			orderProductId.val(response.quantity)
+		})
+	})
+}
+
+var createRemoveProductListener = function(){
+	$('.remove-quantity').on('submit', function(e){
+		e.preventDefault();
+		var url=$(this).attr('action')
+		$.ajax({
+			url: url, 
+			method: 'POST', 
+			data: $(this).serialize()
+		}).done(function(response){
+			var orderProductId = $('input#' + response.id)
+			orderProductId.val(response.quantity)
+		})
+	})
+}
 
 
 var addItemToCartSelector = function() {

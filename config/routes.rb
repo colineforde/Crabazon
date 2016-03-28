@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { registrations: "registrations" }
 
-  resources :cart, only: :update
+  resources :cart, only: [:update, :index] do
+    post :increment, to: 'cart#increment'
+    post :decrement, to: 'cart#decrement'
+  end
+
   resources :users do 
     resources :orders
-    # get 'orders' => 'orders#index', :as => 'orders_index'
-    # post 'order/add/:id' => 'orders#add', :as => 'orders_add'
-    # post 'order/add/:id' => 'orders#add', :as => 'orders_add'
-    # delete 'orders/remove(/:id(/:all))' => 'orders#delete', :as => 'orders_delete'
   end
 
   root 'index#index'
