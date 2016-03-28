@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-right">
+      <% if !current_user %>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-success navbar-btn add-product' %>
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% elsif current_user.admin? %>
+        <%= link_to 'Manage Inventory', admin_index_path, class: 'btn btn-success navbar-btn add-product' %>
+      <% else %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-success navbar-btn add-product' %>
+      <% end %>
+      <%= link_to 'Categories', categories_path, class: 'btn btn-success navbar-btn add-product' %>
+      <%= link_to 'Contact Us', visitors_path, class: 'btn btn-success navbar-btn add-product' %>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <% if flash[:error] %>
+      <div class="error text-center" id="flash">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <div class="col-md-12">
+      <div class="col-md-6 text-right product-display">
+        <img alt="<%= @product.name %> Image" class="index-image img-thumbnail" src="<%= @product.product_image %>"/>
+        <br>
+        <p class="index-qty">
+            Qty remaining: <%= @product.inventory %>
+          </p><br>
+      </div>
+      <div class="col-md-6 product-display">
+        <p>Product Name: <br><b><%= @product.name %></b></p>
+        <div class="price-box"><p>Product Price: <br><b>$<%= @product.price %></b></p></div>
+        <div class="index-description">
+          <p>Product Description: <br><b><%= @product.description %></b></p>
+        </div>
+      </div>
+    </div>
+  </div><br><br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+    <p>Categories:
+      <% @product.categories.each do |category| %>
+        <a href="<%= category_path(category) %>">
+          <ul><li><%= "#{category.name}" %></li></ul>
+        </a>
+      <% end %>
+    </p>
+    </div>
+  </div>
+</div>

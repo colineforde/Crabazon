@@ -30,7 +30,15 @@ class OrderProductsController < ApplicationController
     @order = current_user.orders.last
     @order_product = @order.order_products.find(params[:id])
     @order_product.destroy
-    redirect_to user_order_order_products_path(@current_user, @order)
+    if request.xhr?
+      p '=' * 50
+      redirect_to user_order_order_products_path(@current_user, @order)
+      p '=' * 50
+    else
+      p '*' * 50
+      redirect_to user_order_order_products_path(@current_user, @order)
+      p '*' * 50
+    end
   end
 
 
